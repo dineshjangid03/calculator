@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+h1{
+    text-align: center;
+    font-size: 50px;
+    color: teal;
+}
+
+#cal{
+    height: 500px;
+    width: 25%;
+    margin: auto;
+    margin-top: 60px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+   
+}
+#display{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    height: 12%;
+    width: 80%;
+    margin: auto;
+    margin-top: 40px;
+    display: grid;
+    text-align: center;
+    align-items: center;
+    outline: none;
+    font-size: 22px;
+}
+#key{
+    width: 80%;
+    height: 75%;
+    margin: auto;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(4,60px);
+    gap: 15px;
+}
+#key >div{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+.black{
+    background-color: black;
+    color: white;
+}
+.red{
+    background-color: red;
+    color: white;
+}
+@media only screen and (min-width:800px) and (max-width:900px){
+    #cal{
+        width: 45%;
+    }
+}
+@media only screen and (min-width:700px) and (max-width:799px){
+    #cal{
+        width: 55%;
+    }
+}
+@media only screen and (min-width:600px) and (max-width:699px){
+    #cal{
+        width: 65%;
+    }
+}
+@media only screen and (min-width:500px) and (max-width:599px){
+    #cal{
+        width: 75%;
+    }
+}
+@media only screen and (min-width:300px) and (max-width:499px){
+    #cal{
+        width: 85%;
+    }
+}
+@media only screen and (min-width:200px) and (max-width:299px){
+    #cal{
+        width: 95%;
+    }
+}
+@media only screen and (min-width:10px) and (max-width:199px){
+    #cal{
+        width: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <div id="cal">
+        <div id="display">
+        </div>
+        <div id="key">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div class="black">+</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div class="black">-</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div class="black">*</div>
+            <div class="red">C</div>
+            <div>0</div>
+            <div class="black">=</div>
+            <div class="black">/</div>
+        </div>
+
+    </div>
+</body>
+</html>
+<script>
+    let keys= document.querySelectorAll("#key>div");
+    let bag="";
+    for(let i=0; i<keys.length; i++){
+        keys[i].addEventListener("click",myCal);
+    }
+    function myCal(event){
+        let tn = event.target.innerText;
+        if(tn=="C"){
+            bag="";
+            document.querySelector("#display").innerText=""
+        }else if(tn=="="){
+            document.querySelector("#display").innerText=eval(bag);
+        }else{
+            bag=bag+tn;
+            document.querySelector("#display").innerText=bag;
+        }
+    }
+
+</script>
